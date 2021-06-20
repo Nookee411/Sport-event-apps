@@ -24,22 +24,19 @@ public class LoginDataSource {
     public synchronized Result<LoggedInUser> login(String username, String password) {
         mAuth = FirebaseAuth.getInstance();
         try {
-            // TODO: handle loggedInUser authentication
-            final LoggedInUser[] loggedUser = new LoggedInUser[1];
-            final boolean[] isLoginCompleted = {false};
+            LoggedInUser loggedUser = null;
             Task<AuthResult> result = mAuth.signInWithEmailAndPassword(username,password);
             while(!result.isComplete()){
                 wait(1);
             }
-            Log.d(TAG, "Login successful");
-            loggedUser[0] = new LoggedInUser(mAuth.getCurrentUser());
-            isLoginCompleted[0] = true;
-            if(loggedUser[0]!=null)
-                return new Result.Success<>(loggedUser[0]);
+            if(result.isSuccessful()) {
+                Log.d(TAG, "Login successful");
+                loggedUser = new LoggedInUser(mAuth.getCurrentUser());
+            }
+            if(loggedUser!=null)
+                return new Result.Success<>(loggedUser);
             else
-                return new Result.Success<>(new LoggedInUser(
-                            java.util.UUID.randomUUID().toString(),
-                            "Jane Doe"));
+                return new Result.Error(new IOException(ERROR_MESSAGE));
         } catch (Exception e) {
             return new Result.Error(new IOException(ERROR_MESSAGE, e));
         }
