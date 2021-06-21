@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseUser;
 import ru.example.sportevents.data.model.LoggedInUser;
 
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * Class that handles authentication w/ login credentials and retrieves user information.
@@ -31,7 +32,7 @@ public class LoginDataSource {
             }
             if(result.isSuccessful()) {
                 Log.d(TAG, "Login successful");
-                loggedUser = new LoggedInUser(mAuth.getCurrentUser());
+                loggedUser = new LoggedInUser(Objects.requireNonNull(mAuth.getCurrentUser()));
             }
             if(loggedUser!=null)
                 return new Result.Success<>(loggedUser);

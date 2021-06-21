@@ -5,6 +5,7 @@ import android.app.Activity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -28,6 +29,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import ru.example.sportevents.R;
 import ru.example.sportevents.ui.login.LoginViewModel;
 import ru.example.sportevents.ui.login.LoginViewModelFactory;
+import ru.example.sportevents.ui.signup.SignUpActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -46,7 +48,9 @@ public class LoginActivity extends AppCompatActivity {
         final EditText usernameEditText = findViewById(R.id.username);
         final EditText passwordEditText = findViewById(R.id.password);
         final Button loginButton = findViewById(R.id.login);
+        final Button signUpButton = findViewById(R.id.sign_up);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
+        final Intent intent = new Intent(this,SignUpActivity.class);
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
@@ -123,6 +127,13 @@ public class LoginActivity extends AppCompatActivity {
                         passwordEditText.getText().toString());
             }
         });
+
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(intent);
+            }
+        });
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
@@ -135,10 +146,14 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
 
+    private void openSignUpActivity(){
+        //TODO add opening another activity
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d("LOGIN ACTIVITY", "Activity destroyed");
+        Log.d("LOG", "Activity destroyed");
         FirebaseAuth.getInstance().signOut();
 
     }

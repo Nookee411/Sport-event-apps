@@ -9,4 +9,6 @@
     <string name="invalid_username">Имя пользователя не верно</string>
     <string name="invalid_password">Пароль должен быть длиннее 5 символов</string>
     <string name="login_failed">"Вход не удался"</string>
+    <string name="sign_up">Зарегестрироваться</string>
+    <string name="display_name">Имя</string>
 </resources>
