@@ -27,8 +27,6 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
 import ru.example.sportevents.R;
-import ru.example.sportevents.ui.login.LoginViewModel;
-import ru.example.sportevents.ui.login.LoginViewModelFactory;
 import ru.example.sportevents.ui.signup.SignUpActivity;
 
 public class LoginActivity extends AppCompatActivity {
@@ -45,8 +43,8 @@ public class LoginActivity extends AppCompatActivity {
         loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
-        final EditText usernameEditText = findViewById(R.id.username);
-        final EditText passwordEditText = findViewById(R.id.password);
+        final EditText usernameEditText = findViewById(R.id.Susername);
+        final EditText passwordEditText = findViewById(R.id.Spassword);
         final Button loginButton = findViewById(R.id.login);
         final Button signUpButton = findViewById(R.id.sign_up);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
