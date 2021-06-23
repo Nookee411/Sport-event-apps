@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
 import ru.example.sportevents.R;
+import ru.example.sportevents.ui.main.MainActivity;
 import ru.example.sportevents.ui.signup.SignUpActivity;
 
 public class LoginActivity extends AppCompatActivity {
@@ -138,6 +139,11 @@ public class LoginActivity extends AppCompatActivity {
         String welcome = getString(R.string.welcome) + model.getDisplayName();
         // TODO : initiate successful logged in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
+
+        Intent mainActivity = new Intent(this, MainActivity.class);
+        startActivity(mainActivity);
+        finish();
+
     }
 
     private void showLoginFailed(@StringRes Integer errorString) {
