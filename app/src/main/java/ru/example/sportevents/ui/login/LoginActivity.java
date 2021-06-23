@@ -27,12 +27,14 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
 import ru.example.sportevents.R;
+import ru.example.sportevents.ui.main.MainActivity;
 import ru.example.sportevents.ui.signup.SignUpActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
-//    private FirebaseAuth mAuth;
+
+    //    private FirebaseAuth mAuth;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         //FIXME Add logging in after application closure
@@ -48,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         final Button loginButton = findViewById(R.id.login);
         final Button signUpButton = findViewById(R.id.sign_up);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
-        final Intent intent = new Intent(this,SignUpActivity.class);
+        final Intent intent = new Intent(this, SignUpActivity.class);
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
@@ -138,6 +140,11 @@ public class LoginActivity extends AppCompatActivity {
         String welcome = getString(R.string.welcome) + model.getDisplayName();
         // TODO : initiate successful logged in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
+
+        Intent mainActivity = new Intent(this, MainActivity.class);
+        startActivity(mainActivity);
+        finish();
+
     }
 
     private void showLoginFailed(@StringRes Integer errorString) {

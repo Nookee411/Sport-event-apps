@@ -13,4 +13,6 @@
     <string name="display_name">Имя</string>
     <string name="successful_sign_up">Успешная регистрация, </string>
     <string name="unsuccessful_sign_up">Во время регистрации произошла ошибка</string>
+    <string name="login_label">Вход</string>
+    <string name="sign_up_label">Регистрация</string>
 </resources>
