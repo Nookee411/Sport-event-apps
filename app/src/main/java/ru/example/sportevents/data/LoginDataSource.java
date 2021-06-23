@@ -22,19 +22,20 @@ public class LoginDataSource {
     private final String TAG = "AUTHORISER";
     private final String ERROR_MESSAGE = "Error logging in";
     private FirebaseAuth mAuth;
+
     public synchronized Result<LoggedInUser> login(String username, String password) {
         mAuth = FirebaseAuth.getInstance();
         try {
             LoggedInUser loggedUser = null;
-            Task<AuthResult> result = mAuth.signInWithEmailAndPassword(username,password);
-            while(!result.isComplete()){
+            Task<AuthResult> result = mAuth.signInWithEmailAndPassword(username, password);
+            while (!result.isComplete()) {
                 wait(1);
             }
-            if(result.isSuccessful()) {
+            if (result.isSuccessful()) {
                 Log.d(TAG, "Login successful");
                 loggedUser = new LoggedInUser(Objects.requireNonNull(mAuth.getCurrentUser()));
             }
-            if(loggedUser!=null)
+            if (loggedUser != null)
                 return new Result.Success<>(loggedUser);
             else
                 return new Result.Error(new IOException(ERROR_MESSAGE));

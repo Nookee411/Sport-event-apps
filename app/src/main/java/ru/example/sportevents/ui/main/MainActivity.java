@@ -10,9 +10,11 @@ import android.os.Bundle;
 import ru.example.sportevents.R;
 
 public class MainActivity extends AppCompatActivity {
-        RecyclerView eventList;
-        EventListAdapter eventsAdapter;
-        CardView cardLayout;
+
+    RecyclerView eventList;
+    EventListAdapter eventsAdapter;
+    CardView cardLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
         eventList.setAdapter(eventsAdapter);
 //        chatMessageList.scrollToPosition(messageListAdapter.messageList.size()-1);
 
-        eventsAdapter.events.add(new Event("Первое событие", "Первое описание события","Киров"));
+        eventsAdapter.events.add(new Event("Первое событие", "Первое описание события", "Киров"));
         eventsAdapter.notifyDataSetChanged();
     }
+
 }

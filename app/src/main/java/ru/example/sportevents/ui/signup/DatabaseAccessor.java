@@ -10,24 +10,27 @@ import java.util.Date;
 import ru.example.sportevents.data.Result;
 
 public class DatabaseAccessor {
+
     private FirebaseAuth mAuth;
-    public DatabaseAccessor(){
+
+    public DatabaseAccessor() {
         mAuth = FirebaseAuth.getInstance();
     }
-    public synchronized Result<RegisteredUser> signUp(String email, String password, String username){
-        Task<AuthResult> task = mAuth.createUserWithEmailAndPassword(email,password);
+
+    public synchronized Result<RegisteredUser> signUp(String email, String password, String username) {
+        Task<AuthResult> task = mAuth.createUserWithEmailAndPassword(email, password);
         try {
-        while (!task.isComplete())
-            wait(100);
+            while (!task.isComplete())
+                wait(100);
         } catch (InterruptedException e) {
             e.printStackTrace();
             return new Result.Error(e);
         }
-        if(task.isSuccessful()){
+        if (task.isSuccessful()) {
             return new Result.Success<>(mAuth.getCurrentUser());
-        }
-        else
-            return  new Result.Error(new IOException("Unable to register new user"));
+        } else
+            return new Result.Error(new IOException("Unable to register new user"));
 
     }
+
 }
