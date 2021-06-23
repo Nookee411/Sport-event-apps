@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SportEvents">
         <activity
-            android:name=".ui.login.LoginActivity"
+            android:name=".ui.login.LoginActivity"п
             android:label="@string/login_label">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
