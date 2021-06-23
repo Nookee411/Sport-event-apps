@@ -12,16 +12,19 @@ import java.text.SimpleDateFormat;
 import ru.example.sportevents.R;
 
 public class EventViewHolder extends RecyclerView.ViewHolder {
+
     protected TextView eventName;
     protected TextView eventDescription;
+
     public EventViewHolder(@NonNull View itemView) {
         super(itemView);
-        eventName =itemView.findViewById(R.id.event_name);
-        eventDescription =itemView.findViewById(R.id.event_desc);
+        eventName = itemView.findViewById(R.id.event_name);
+        eventDescription = itemView.findViewById(R.id.event_desc);
     }
 
     public void bind(Event event) {
         eventName.setText(event.getName());
         eventDescription.setText(event.getDescription());
     }
+
 }

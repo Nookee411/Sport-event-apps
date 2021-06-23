@@ -37,17 +37,16 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DatabaseAccessor db = new DatabaseAccessor();
-                Result<RegisteredUser> signUpResult= db.signUp(
+                Result<RegisteredUser> signUpResult = db.signUp(
                         email.getText().toString(),
                         password.getText().toString(),
                         name.getText().toString()
                 );
-                if(signUpResult instanceof Result.Success) {
-                    String success = getString(R.string.successful_sign_up)+ ((Result.Success<RegisteredUser>) signUpResult).getData().getDisplayname();
+                if (signUpResult instanceof Result.Success) {
+                    String success = getString(R.string.successful_sign_up) + ((Result.Success<RegisteredUser>) signUpResult).getData().getDisplayName();
                     Toast.makeText(getApplicationContext(), success, Toast.LENGTH_LONG).show();
-                }
-                else{
-                    Toast.makeText(getApplicationContext(),getString(R.string.unsuccessful_sign_up), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), getString(R.string.unsuccessful_sign_up), Toast.LENGTH_SHORT).show();
                 }
             }
         });
