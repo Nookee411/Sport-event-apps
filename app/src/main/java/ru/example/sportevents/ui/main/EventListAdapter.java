@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import ru.example.sportevents.R;
 
 public class EventListAdapter extends RecyclerView.Adapter {
+
     public ArrayList<Event> events = new ArrayList<>();
     private FirebaseAuth instance;
     private FirebaseUser user;
@@ -37,8 +38,8 @@ public class EventListAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        Event eventItem= events.get(position);
-        ((EventViewHolder)holder).bind(eventItem);
+        Event eventItem = events.get(position);
+        ((EventViewHolder) holder).bind(eventItem);
     }
 
 
@@ -47,4 +48,5 @@ public class EventListAdapter extends RecyclerView.Adapter {
     public int getItemCount() {
         return events.size();
     }
+
 }

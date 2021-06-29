@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseUser;
 import ru.example.sportevents.R;
 
 public class EventViewHolder extends RecyclerView.ViewHolder {
+
     protected TextView eventName;
     protected TextView eventDate;
     public String eventHash;
@@ -27,6 +28,7 @@ public class EventViewHolder extends RecyclerView.ViewHolder {
         eventName =itemView.findViewById(R.id.event_name);
         eventDate =itemView.findViewById(R.id.event_desc);
         button = itemView.findViewById(R.id.buttonGo);
+
 
     }
 
@@ -44,4 +46,5 @@ public class EventViewHolder extends RecyclerView.ViewHolder {
 //            }
 //        });
     }
+
 }

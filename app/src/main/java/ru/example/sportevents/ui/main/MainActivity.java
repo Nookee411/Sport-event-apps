@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         EventListAdapter eventsAdapter;
         FirebaseAuth instance;
         FirebaseUser user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         eventList.setLayoutManager(new LinearLayoutManager(this));
         eventList.setAdapter(eventsAdapter);
     }
+
 
 
 }

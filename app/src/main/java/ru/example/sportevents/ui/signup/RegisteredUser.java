@@ -2,33 +2,22 @@ package ru.example.sportevents.ui.signup;
 
 import com.google.firebase.auth.FirebaseUser;
 
+import lombok.Data;
+
+@Data
 public class RegisteredUser {
-    private String displayname;
+
+    private String displayName;
     private String email;
 
-    public RegisteredUser(String displayname, String email) {
-        this.displayname = displayname;
+    public RegisteredUser(String displayName, String email) {
+        this.displayName = displayName;
         this.email = email;
     }
 
-    public RegisteredUser(FirebaseUser registeredUser){
-        this.displayname = registeredUser.getDisplayName();
+    public RegisteredUser(FirebaseUser registeredUser) {
+        this.displayName = registeredUser.getDisplayName();
         this.email = registeredUser.getEmail();
     }
 
-    public String getDisplayname() {
-        return displayname;
-    }
-
-    public void setDisplayname(String displayname) {
-        this.displayname = displayname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }
