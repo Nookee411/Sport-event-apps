@@ -4,11 +4,13 @@ public class Event {
     private String name;
     private String description;
     private String city;
+    private final String hash;
 
-    public Event(String name, String description, String city) {
+    public Event(String name, String description, String city, String hash) {
         this.name = name;
         this.description = description;
         this.city = city;
+        this.hash = hash;
     }
 
     public String getName() {
@@ -19,7 +21,7 @@ public class Event {
         this.name = name;
     }
 
-    public String getDescription() {
+    public String getDate() {
         return description;
     }
 
@@ -31,7 +33,12 @@ public class Event {
         return city;
     }
 
+    public String getHash() {
+        return hash;
+    }
+
     public void setCity(String city) {
         this.city = city;
     }
 }
+
